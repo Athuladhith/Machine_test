@@ -4,6 +4,7 @@ const dotenv=require('dotenv')
 dotenv.config()
 const connectDB = async () => {
   try {
+
     const uri = process.env.MONGO_URI; 
     await mongoose.connect(uri, {
       useNewUrlParser: true,
