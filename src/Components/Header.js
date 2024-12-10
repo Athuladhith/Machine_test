@@ -35,8 +35,8 @@ const Header = () => {
           <span className={isMobileMenuOpen ? "line line3" : "line"}></span>
         </div>
         <nav className={`nav-links ${isMobileMenuOpen ? "open" : ""}`}>
-          <a href="/menu">Home</a>
-          <a href="/menu">Menu</a>
+          <a href="/">Home</a>
+          <a href="/">Menu</a>
           <a href="#">Make a Restaurant</a>
           <a href="#">Contact Us</a>
 

@@ -1,11 +1,7 @@
-
-
-
 import React from 'react';
 import styled from 'styled-components';
 import "../styles/Menulist.css";
 import img1 from '../drinksimg.png';
-import { red } from '@mui/material/colors';
 
 const MenuContainer = styled.div`
   background-color: transparent;
@@ -75,57 +71,58 @@ const DrinkDescription = styled.p`
   font-family: 'Kelly Slab', cursive;
 `;
 
-
 const categoryImages = [
-  { category: 'Drink', imageUrl1: 'https://png.pngtree.com/png-vector/20240327/ourlarge/pngtree-glass-teapot-with-loose-tea-leaves-and-coffee-beans-png-image_12241668.png',imageUrl2:"https://w7.pngwing.com/pngs/734/980/png-transparent-filled-lemon-juice-illustration-orange-juice-lemonade-grapefruit-juice-juice-drinks-food-orange-citrus.png" },
-  { category: 'falooda', imageUrl1: 'https://www.shutterstock.com/image-vector/hookah-vector-logo-design-on-260nw-1564155655.jpg',imageUrl2:img1 },
-
+  { imageUrl1: 'https://png.pngtree.com/png-vector/20240327/ourlarge/pngtree-glass-teapot-with-loose-tea-leaves-and-coffee-beans-png-image_12241668.png', imageUrl2: "https://w7.pngwing.com/pngs/734/980/png-transparent-filled-lemon-juice-illustration-orange-juice-lemonade-grapefruit-juice-juice-drinks-food-orange-citrus.png" },
+  { imageUrl1: 'https://www.shutterstock.com/image-vector/hookah-vector-logo-design-on-260nw-1564155655.jpg', imageUrl2: img1 },
 ];
+
+const getRandomImage = () => {
+  const randomIndex = Math.floor(Math.random() * categoryImages.length);
+  return categoryImages[randomIndex];
+};
 
 const DrinkMenu = ({ category }) => {
   if (!category) {
-    return <div></div>; 
+    return <div></div>;
   }
 
-  
-  const categoryImage = categoryImages.find(item => item.category === category.name);
+  const categoryImage = getRandomImage();
 
   return (
-    <div className='menudiv' >
-    <MenuContainer>
-      
-      {categoryImage && (
-        <div style={{ position: "absolute", width: "70px", height: "70px", top: "-10px", left: "-10px" }}>
-          <img src={categoryImage.imageUrl1} alt={`${category.name} Deco`} style={{ height: "75px", width: "75px" }} />
-        </div>
-      )}
-      
-      <div style={{ position: "absolute", width: "70px", height: "70px", bottom: "-10px", right: "-10px" }}>
-      <img src={categoryImage.imageUrl2} alt={`${category.name} Decoration`} style={{ height: "75px", width: "75px" }} />
-      </div>
-
-      <div style={{ display: "flex", width: "100%", alignItems: "center", justifyContent: "center" }}>
-        <div style={{ border: "1px solid #fff", width: "15%", height: "0px", marginRight: "15px" }}></div>
-        <Header>{category.name} Menu</Header>
-        <div style={{ border: "1px solid #fff", width: "15%", height: "0px", marginLeft: "15px" }}></div>
-      </div>
-
-      <DrinkGrid>
-        {category.items && category.items.length > 0 ? (
-          category.items.map((item) => (
-            <DrinkCard key={item._id}>
-              <DrinkItem>
-                <DrinkName>{item.name}</DrinkName>
-                <DrinkPrice>${item.price}</DrinkPrice>
-              </DrinkItem>
-              <DrinkDescription>{item.description}</DrinkDescription>
-            </DrinkCard>
-          ))
-        ) : (
-          <p>No items available</p>
+    <div className='menudiv'>
+      <MenuContainer>
+        {categoryImage && (
+          <div style={{ position: "absolute", width: "70px", height: "70px", top: "-10px", left: "-10px" }}>
+            <img src={categoryImage.imageUrl1} alt={`${category.name} Deco`} style={{ height: "75px", width: "75px" }} />
+          </div>
         )}
-      </DrinkGrid>
-    </MenuContainer>
+
+        <div style={{ position: "absolute", width: "70px", height: "70px", bottom: "-10px", right: "-10px" }}>
+          <img src={categoryImage.imageUrl2} alt={`${category.name} Decoration`} style={{ height: "75px", width: "75px" }} />
+        </div>
+
+        <div style={{ display: "flex", width: "100%", alignItems: "center", justifyContent: "center" }}>
+          <div style={{ border: "1px solid #fff", width: "15%", height: "0px", marginRight: "15px" }}></div>
+          <Header>{category.name} Menu</Header>
+          <div style={{ border: "1px solid #fff", width: "15%", height: "0px", marginLeft: "15px" }}></div>
+        </div>
+
+        <DrinkGrid>
+          {category.items && category.items.length > 0 ? (
+            category.items.map((item) => (
+              <DrinkCard key={item._id}>
+                <DrinkItem>
+                  <DrinkName>{item.name}</DrinkName>
+                  <DrinkPrice>${item.price}</DrinkPrice>
+                </DrinkItem>
+                <DrinkDescription>{item.description}</DrinkDescription>
+              </DrinkCard>
+            ))
+          ) : (
+            <p>No items available</p>
+          )}
+        </DrinkGrid>
+      </MenuContainer>
     </div>
   );
 };

@@ -24,6 +24,7 @@ const CreateMenuPage = () => {
       const response = await axios.post('http://localhost:5000/api/menucreate', { name: menuName });
       setMenu(response.data); 
       alert('Menu created successfully!');
+      setMenuName('')
     } catch (error) {
       setError(error.response ? error.response.data : 'Server error');
     } finally {
@@ -40,7 +41,7 @@ const CreateMenuPage = () => {
         <input
           type="text"
           value={menuName}
-          onChange={(e) => setMenuName(e.target.value)}
+          onChange={(e) => setMenuName(e.target.value.toUpperCase())}
           placeholder="Enter Menu Name"
           style={styles.input}
         />

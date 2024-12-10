@@ -39,6 +39,10 @@ console.log(menus,'mmmmmennnnuuuuuuuu ubs')
         description,
       });
       alert('Item added successfully!');
+      setItemName('')
+      setPrice('')
+      setDescription('')
+      setMenus([])
     } catch (error) {
       console.error('Error adding item:', error);
     }
