@@ -21,7 +21,7 @@ const CreateMenuPage = () => {
     setError(null);
 
     try {
-      const response = await axios.post('http://localhost:5000/api/menucreate', { name: menuName });
+      const response = await axios.post('https://machine-test-2.onrender.com/api/menucreate', { name: menuName });
       setMenu(response.data); 
       alert('Menu created successfully!');
       setMenuName('')

@@ -11,7 +11,7 @@ function Menuoptions() {
   useEffect(() => {
     const fetchMenus = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/menus'); 
+        const response = await axios.get('https://machine-test-2.onrender.com/api/menus'); 
         setData(response.data); 
 
         

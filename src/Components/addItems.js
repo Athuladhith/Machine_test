@@ -14,7 +14,7 @@ const AddMenuItemPage = () => {
   useEffect(() => {
     const fetchMenus = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/menus');
+        const response = await axios.get('https://machine-test-2.onrender.com/api/menus');
         console.log(response.data,'datad frommm fbackkk')
         setMenus(response.data);
       } catch (error) {
@@ -33,7 +33,7 @@ console.log(menus,'mmmmmennnnuuuuuuuu ubs')
     }
 
     try {
-      const response = await axios.post(`http://localhost:5000/api/menu/${selectedMenuId}/item`, {
+      const response = await axios.post(`https://machine-test-2.onrender.com/api/menu/${selectedMenuId}/item`, {
         name: itemName,
         price,
         description,
