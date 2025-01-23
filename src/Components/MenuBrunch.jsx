@@ -103,7 +103,7 @@ const DrinkMenu = ({ category }) => {
 
         <div style={{ display: "flex", width: "100%", alignItems: "center", justifyContent: "center" }}>
           <div style={{ border: "1px solid #fff", width: "15%", height: "0px", marginRight: "15px" }}></div>
-          <Header>{category.name} Menu</Header>
+          <Header>{category.name} </Header>
           <div style={{ border: "1px solid #fff", width: "15%", height: "0px", marginLeft: "15px" }}></div>
         </div>
 
